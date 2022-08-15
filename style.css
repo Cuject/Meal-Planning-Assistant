@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;  
+    background-color: lightgrey;
+    
+}
+
+.container{
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50px 1fr 1fr 50px;
+
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+form{
+    border: 4px solid green;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: lightgreen;
+
+    margin-bottom: 4px;
+}
+
+
+#outputBox, #AMDRBOX{
+    border: 4px solid black;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 0;
+    padding: px;
+}
+
+#carbCent, #proteinCent, #fatCent{
+    text-align: left;
+    font-size: 0.5 px;
+}
+
+.card{
+    border: 5px solid gray;
+    border-radius: 15px;
+    margin: 2px;
+    padding: 4px;
+    grid-row-start: 2;
+}
+
+#DBWcard{grid-column-start: 2;}
+#TERcard{grid-column-start: 3;}
+#MACcard{grid-column-start: 4;}
+#DIETcard{
+    background-color: darkgray;
+    grid-column-start: 2;
+    grid-column-end: span 3;
+    grid-row-start: 3;
+}
+
+.exchangeDistro{
+    background-color: darkgray;
+    width: 100%;
+    border-radius: 2px;
+}
+
+tr, th{
+    padding: 4px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+th{
+    background-color: rgb(180, 129, 180);
+}
+
+td{
+    padding: 5px;
+}

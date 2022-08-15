@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href = "style.css">
+</head>
+<body>
+
+    <script src="main.js"></script>
+
+    <div class="container">
+        <div class = "card" id = "DBWcard">
+            <h1>Desirable Body Weight</h1>
+
+            <button onclick="calcBtn()">CALCULATE</button>
+            <button onclick="reset()">RESET</button>
+
+            <form>
+                <label for = "feet">Feet</label>     <br>
+                <input id = "feet" type= "number">   <br>
+                <label for = "inches">inches</label> <br>
+                <input id = "inches" type= "number">   
+            </form> 
+            
+            <div id = outputBox>
+                <h2 id="outputForm">Result comes here</h2>
+            </div>
+             <br>
+        </div>
+        
+        <div class = "card" id = "TERcard">
+            <h1>Total Energy Requirement</h1>
+            <div>
+                <label for="DBWout">DBW</label>
+                <input type="number" id="DBWout" onchange="TER()"> <br>
+            </div>
+            
+    
+            <form onchange="TER()">
+                <input type="radio" id="sedentary" name="PAL" value="Sedentary" disabled>
+                <label for="sedentary">Sedentary</label><br>
+    
+                <input type="radio" id="light" name="PAL" value="Light" disabled>
+                <label for="light">Light</label><br>
+    
+                <input type="radio" id="moderate" name="PAL" value="Moderate" disabled>
+                <label for="moderate">Moderate</label><br>
+                
+                <input type="radio" id="vigor" name="PAL" value="Vigorous" disabled>
+                <label for="vigor">Very Active or Vigorous</label><br>
+            </form> 
+    
+            <div id = outputBox>
+                <h2 id="TERForm">Result comes here</h2>
+            </div>
+        </div>
+        
+        <div class="card" id = "MACcard">
+            <h1>Macronutrient Distribution</h1>
+            <label for = "TERout">TER</label>
+            <input id = "TERout" type="number" onchange="centSum()">
+
+            <form>
+                <label for = "carbohydrate">Carbohydrate</label> 
+                <input id = "carbohydrate" type="number" value = "65" onchange="centSum()" disabled> <br>
+    
+                <label for = "protein">Protein</label>
+                <input id = "protein" type="number" value = "15" onchange="centSum()" disabled><br>    
+    
+                <label for = "fat">Fat</label>
+                <input id = "fat" type="number" value = "20" onchange="centSum()" disabled><br>
+            </form>
+    
+            <div id = "AMDRBOX">
+                <div id="AMDR">100%</div>
+                <div id = "carbCent">Carbohydrates: </div> <br>
+                <div id = "proteinCent">Protein: </div><br>
+                <div id = "fatCent">Fat: </div>
+            </div>
+        </div>
+
+        <div class = "card" id="DIETcard">
+            <table class="exchangeDistro" onchange="exchanges()">
+                <tr>
+                    <th>List</th>
+                    <th>Food</th>
+                    <th>No. of Exchanges</th>
+                    <th>Carbohydrate (g)</th>
+                    <th>Protein (g)</th>
+                    <th>Fat (g)</th>
+                    <th>Energy (kcal)</th> 
+                </tr>
+                <tr>
+                    <td>I</td>
+                    <td>Vegetable</td>
+                    <td><input id="VegInput" type = "number" value = "1"></td>
+                    <td id="carbVeg">3</td>
+                    <td id="protVeg">1</td>
+                    <td>-</td>
+                    <td id="totalVeg">16</td>
+                </tr>
+                <tr>
+                    <td>II</td>
+                    <td>Fruit</td>
+                    <td><input id="FruitInput" type = "number" value = "1"></td>
+                    <td id="carbFruit">10</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td id="totalFruit">40</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">III</td>
+                    <td>Milk(Whole)</td>
+                    <td><input id="WMilkInput" type = "number" value = "1"></td>
+                    <td id="carbWMilk">12</td>
+                    <td id="protWMilk">8</td>
+                    <td id="fatWMilk">10</td>
+                    <td id="totalWMilk">170</td>
+                </tr>
+                <tr>
+                    <td>Milk(LF)</td>
+                    <td><input id="LFMilkInput" type = "number" value = "1"></td>
+                    <td id="carbLFMilk">12</td>
+                    <td id="protLFMilk">8</td>
+                    <td id="fatLFMilk">5</td>
+                    <td id="totalLFMilk">125</td>
+                </tr>
+                <tr>
+                    <td>Milk(NF)</td>
+                    <td><input id="NFMilkInput" type = "number" value = "1"></td>
+                    <td id="carbNFMilk">12</td>
+                    <td id="protNFMilk">8</td>
+                    <td>-</td>
+                    <td id="totalNFMilk">80</td>
+                </tr>
+                <tr>
+                    <td>VII</td>
+                    <td>Sugar</td>
+                    <td><input id="SugarInput" type = "number" value = "1"></td>
+                    <td id="carbSugar">5</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td id="totalSugar">20</td>
+                </tr>
+                <tr>
+                    <td colspan = "7"></td>
+                </tr>
+                <tr>
+                    <td rowspan = "3">IV</td>
+                    <td>Rice A</td>
+                    <td><input id="RiceAInput" type = "number" value = "1"></td>
+                    <td id="carbRiceA">23</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td id="totalRiceA">92</td>
+                </tr>
+                <tr>
+                    <td>Rice B</td>
+                    <td><input id="RiceBInput" type = "number" value = "1"></td>
+                    <td id="carbRiceB">23</td>
+                    <td id="protRiceB">2</td>
+                    <td>-</td>
+                    <td id="totalRiceB">100</td>
+                </tr>
+                <tr>
+                    <td>Rice C</td>
+                    <td><input id="RiceCInput" type = "number" value = "1"></td>
+                    <td id="carbRiceC">23</td>
+                    <td id="protRiceC">4</td>
+                    <td>-</td>
+                    <td id="totalRiceC">108</td>
+                </tr>
+                <tr>
+                    <td colspan = "7"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">V</td>
+                    <td>LF Meat</td>
+                    <td><input id="LFMeatInput"type = "number" value = "1"></td>
+                    <td>-</td>
+                    <td id="protLFMeat">8</td>
+                    <td id="fatLFMeat">1</td>
+                    <td id="totalLFMeat">41</td>
+                </tr>
+                <tr>
+                    <td>MF Meat</td>
+                    <td><input id="MFMeatInput" type = "number" value = "1"></td>
+                    <td>-</td>
+                    <td id="protMFMeat">8</td>
+                    <td id="fatMFMeat">6</td>
+                    <td id="totalMFMeat">86</td>
+                </tr>
+                <tr>
+                    <td>HF Meat</td>
+                    <td><input id="HFMeatInput" type = "number" value = "1"></td>
+                    <td>-</td>
+                    <td id="protHFMeat">8</td>
+                    <td id="fatHFMeat">10</td>
+                    <td id="totalHFMeat">122</td>
+                </tr>
+                <tr>
+                    <td colspan = "7"></td>
+                </tr>
+                <tr>
+                    <td>VI</td>
+                    <td>Fat</td>
+                    <td><input id="FatInput" type = "number" value = "1"></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td id="fatFat">5</td>
+                    <td id="totalFat">45</td>
+                </tr>
+                <tr style="background-color: rgb(180, 129, 180);">
+                    <td colspan="3">Total</td>
+                    <td id="carbTotal">117 kcal</td>
+                    <td id="protTotal">27 kcal</td>
+                    <td id="fatTotal">16 kcal</td>
+                    <td id="finalTotal">718 kcal</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>
